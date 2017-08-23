@@ -10,28 +10,25 @@ module.exports = {
   },
   entry: `${__dirname}/src/main.js`,
   output: {
-    path: `${__dirname}/src/main.js`,
-    output: {
-      path: `${__dirname}/build`,
-      publicPath: '/',
-      filename: 'bundle-[hash].js'
-    },
-    plugins: [
-      new HtmlPlugin({ template: `${__dirname}/src/index.html`}),
-      new ExtractPlugin('bundle-[hash].css')
-    ],
-    module: {
-      rules: [
-        {
-          test: /\.js$/,
-          exclude: /node_modules/,
-          loader: 'babel-loader'
-        },
-        {
-          test: /\.scss$/,
-          loader: ExtractPlugin.extract(['css-loader', 'sass-loader'])
-        }
-      ]
-    }
+    path: `${__dirname}/build`,
+    publicPath: '/',
+    filename: 'bundle-[hash].js'
+  },
+  plugins: [
+    new HtmlPlugin({ template: `${__dirname}/src/index.html`}),
+    new ExtractPlugin('bundle-[hash].css')
+  ],
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: 'babel-loader'
+      },
+      {
+        test: /\.scss$/,
+        loader: ExtractPlugin.extract(['css-loader', 'sass-loader'])
+      }
+    ]
   }
 };
